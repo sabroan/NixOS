@@ -65,8 +65,37 @@
             run = "hx %s";
           }
         ];
+        extract = [
+          {
+            run = ''${lib.getExe pkgs.ouch} decompress "%s"'';
+            desc = "Decompress archive";
+            for = "unix";
+          }
+        ];
       };
       open = {
+        prepend_rules = [
+          {
+            mime = "application/zip";
+            use = "extract";
+          }
+          {
+            mime = "application/x-tar";
+            use = "extract";
+          }
+          {
+            mime = "application/x-7z-compressed";
+            use = "extract";
+          }
+          {
+            mime = "application/x-rar";
+            use = "extract";
+          }
+          {
+            url = "*.{zip,tar,tar.gz,tgz,7z,rar}";
+            use = "extract";
+          }
+        ];
         rules = [
           {
             url = "*.{json,yaml,yml,toml,ini,txt,md,nix}";

@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   xdg = {
     autostart = {
+      enable = false;
       readOnly = true;
     };
     mimeApps = {
@@ -18,10 +19,16 @@
       ];
       config = {
         common = {
-          default = "gtk";
+          default = [
+            "wlr"
+            "gtk"
+          ];
         };
         sway = {
-          default = [ "gtk" ];
+          default = [
+            "wlr"
+            "gtk"
+          ];
           "org.freedesktop.impl.portal.ScreenCast" = [
             "wlr"
           ];
