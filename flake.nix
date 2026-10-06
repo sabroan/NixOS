@@ -1,0 +1,82 @@
+{
+  inputs = {
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    nixos-hardware = {
+      url = "github:nixos/nixos-hardware/master";
+    };
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    };
+    disko = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/disko";
+    };
+    home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+    };
+    impermanence = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/impermanence";
+    };
+    zen-browser = {
+      inputs.home-manager.follows = "home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:0xc000022070/zen-browser-flake";
+    };
+  };
+
+  outputs =
+    {
+      chaotic,
+      disko,
+      home-manager,
+      impermanence,
+      nixos-hardware,
+      nixpkgs,
+      self,
+      ...
+    }@inputs:
+    let
+      load = {
+        all =
+          dir:
+          builtins.filter (path: nixpkgs.lib.hasSuffix ".nix" (builtins.toString path)) (
+            nixpkgs.lib.filesystem.listFilesRecursive dir
+          );
+        children =
+          dir:
+          nixpkgs.lib.mapAttrsToList (file: _: dir + "/${file}") (
+            nixpkgs.lib.filterAttrs (file: type: type == "regular" && nixpkgs.lib.hasSuffix ".nix" file) (
+              builtins.readDir dir
+            )
+          );
+      };
+    in
+    {
+      nixosConfigurations = {
+        desktop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs load; };
+          modules = [
+            chaotic.nixosModules.default
+            disko.nixosModules.disko
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs load; };
+            }
+            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-cpu-amd-pstate
+            nixos-hardware.nixosModules.common-gpu-amd
+            nixos-hardware.nixosModules.common-pc-ssd
+            impermanence.nixosModules.impermanence
+          ]
+          ++ load.children ./desktop;
+        };
+      };
+    };
+}
