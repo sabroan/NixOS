@@ -20,7 +20,7 @@
       mv = "mv -i";
       rm = "rm -i";
 
-      nxupdate = "sudo nixos-rebuild switch --flake /nix/state/flake";
+      nxupdate = "sudo nixos-rebuild switch --flake path:/nix/state/flake";
       nxpurge = "sudo nix-collect-garbage -d";
       tosleep = "systemctl suspend";
     };

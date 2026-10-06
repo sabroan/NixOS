@@ -10,8 +10,8 @@
       palette = "tomorrow-night-eighties";
       palettes = {
         tomorrow-night-eighties = {
-          background = "#2D2D2D";
-          foreground = "#CCCCCC";
+          # black = "#2D2D2D";
+          white = "#CCCCCC";
           dark = "#515151";
           gray = "#999999";
           red = "#F2777A";
@@ -28,20 +28,17 @@
         "$os"
         "$username"
         "$hostname"
-        "$fill"
-        "$git_branch"
-        "$git_status"
-        "$nodejs"
-        "$bun"
-        "$php"
-        # "$time"
-        # "$cmd_duration"
         "$line_break"
         "$directory"
         "$character"
       ];
 
       right_format = builtins.concatStringsSep "" [
+        "$git_status"
+        "$git_branch"
+        "$nodejs"
+        "$bun"
+        "$php"
         "$time"
         "$cmd_duration"
       ];
@@ -52,86 +49,90 @@
       };
 
       username = {
+        disabled = false;
         show_always = false;
-        style_user = "bg:none fg:foreground";
+        style_user = "bg:none fg:white";
         style_root = "bg:none fg:red";
-        format = "[ $user ]($style)";
+        format = "[$user]($style)";
       };
 
       hostname = {
+        disabled = false;
         ssh_only = true;
       };
 
       directory = {
-        style = "bold bg:none fg:foreground";
-        format = "[[$path]($style)[$read_only]($read_only_style) ](bg:none)";
-        truncation_length = 3;
-        truncation_symbol = "…/";
+        disabled = false;
+        style = "bold bg:none fg:white";
+        format = "[$path]($style)[$read_only]($read_only_style)";
         substitutions = {
           Downloads = " ";
         };
       };
 
       git_branch = {
-        symbol = "";
-        style = "bg:none";
-        format = "[[ $symbol$branch ](fg:foreground bg:none)]($style)";
+        disabled = false;
+        style = "fg:blue bg:none";
+        format = "[$symbol$branch(:$remote_branch)]($style)";
       };
 
       git_status = {
-        style = "bg:none";
-        format = "[[( $all_status$ahead_behind )](fg:gray bg:none)]($style)";
+        disabled = false;
+        style = "fg:yellow bg:none";
+        format = "[$all_status$ahead_behind]($style)";
       };
 
       nodejs = {
+        disabled = false;
         symbol = "";
-        style = "bg:none";
-        format = "[[ $symbol($version) ](fg:green bg:none)]($style)";
+        style = "fg:green bg:none";
+        format = "[$symbol($version)]($style)";
       };
 
       bun = {
+        disabled = false;
         symbol = "";
-        style = "bg:none";
-        format = "[[ $symbol($version) ](fg:foreground bg:none)]($style)";
+        style = "fg:white bg:none";
+        format = "[$symbol($version)]($style)";
       };
 
       php = {
+        disabled = false;
         symbol = "";
-        style = "bg:none";
-        format = "[[ $symbol($version) ](fg:purple bg:none)]($style)";
+        style = "fg:purple bg:none";
+        format = "[$symbol($version)]($style)";
       };
 
       docker_context = {
+        disabled = false;
         symbol = "";
-        style = "bg:none";
-        format = "[[ $symbol($context) ](fg:blue bg:none)]($style)";
+        style = "fg:blue bg:none";
+        format = "[$symbol($context)]($style)";
       };
 
       time = {
         disabled = false;
-        time_format = "%R";
-        style = "bg:none";
-        format = "[[  $time ](fg:purple bg:none)]($style)";
+        time_format = "%R:%S";
+        style = "fg:gray bg:none";
+        format = "[ $time]($style)";
       };
 
       fill = {
-        symbol = " ";
-      };
-
-      line_break = {
         disabled = false;
+        symbol = " ";
       };
 
       character = {
         disabled = false;
+        format = " $symbol ";
         success_symbol = "[❯](bold fg:green)";
-        error_symbol = "[❯](bold fg:red)";
+        error_symbol = "[✗](bold fg:red)";
       };
 
       cmd_duration = {
         disabled = false;
-        style = "bg:none";
-        format = "[[󱦟 $duration](italic fg:cyan bg:none)]($style)";
+        style = "fg:gray bg:none";
+        format = "[ 󱦟 $duration]($style)";
         min_time_to_notify = 45000;
         show_milliseconds = false;
         show_notifications = true;
