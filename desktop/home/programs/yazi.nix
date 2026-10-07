@@ -113,12 +113,13 @@
       };
     };
     theme = {
+      # --- File Manager Pane ---
       mgr = {
         cwd = {
-          fg = "#cccccc";
+          fg = "white";
         };
         hovered = {
-          fg = "#ffffff";
+          fg = "lightwhite";
           bg = "#515151";
         };
         preview_hovered = {
@@ -131,48 +132,119 @@
         };
         find_position = {
           fg = "#2d2d2d";
-          bg = "#f2777a";
+          bg = "red";
           bold = true;
         };
         marker_selected = {
-          fg = "#6699cc";
-          bg = "#6699cc";
+          fg = "blue";
+          bg = "blue";
         };
         marker_copied = {
-          fg = "#ffcc66";
-          bg = "#ffcc66";
+          fg = "yellow";
+          bg = "yellow";
         };
         marker_cut = {
-          fg = "#f2777a";
-          bg = "#f2777a";
+          fg = "red";
+          bg = "red";
         };
         marker_marked = {
-          fg = "#99cc99";
-          bg = "#99cc99";
+          fg = "green";
+          bg = "green";
         };
         count_selected = {
           fg = "#2d2d2d";
-          bg = "#6699cc";
+          bg = "blue";
           bold = true;
         };
         count_copied = {
           fg = "#2d2d2d";
-          bg = "#ffcc66";
+          bg = "yellow";
           bold = true;
         };
         count_cut = {
           fg = "#2d2d2d";
-          bg = "#f2777a";
+          bg = "red";
           bold = true;
         };
         border_symbol = "│";
         border_style = {
           fg = "#515151";
         };
+        symlink_target = {
+          fg = "cyan";
+          italic = true;
+        };
       };
+
+      # --- Mode Indicators ---
+      mode = {
+        normal_main = {
+          fg = "#2d2d2d";
+          bg = "blue";
+          bold = true;
+        };
+        normal_alt = {
+          fg = "blue";
+          bg = "#393939";
+        };
+        select_main = {
+          fg = "#2d2d2d";
+          bg = "green";
+          bold = true;
+        };
+        select_alt = {
+          fg = "green";
+          bg = "#393939";
+        };
+        unset_main = {
+          fg = "#2d2d2d";
+          bg = "red";
+          bold = true;
+        };
+        unset_alt = {
+          fg = "red";
+          bg = "#393939";
+        };
+      };
+
+      # --- Tab Bar ---
+      tabs = {
+        active = {
+          fg = "#2d2d2d";
+          bg = "blue";
+          bold = true;
+        };
+        inactive = {
+          fg = "white";
+          bg = "#393939";
+        };
+        sep_left = {
+          open = "";
+          close = "";
+        };
+        sep_right = {
+          open = "";
+          close = "";
+        };
+      };
+
+      # --- Pane Scroll / Position Indicators ---
+      indicator = {
+        parent = {
+          fg = "#515151";
+        };
+        current = {
+          fg = "blue";
+        };
+        preview = {
+          fg = "#515151";
+        };
+      };
+
+      # --- Status Bar ---
       status = {
         overall = {
-          fg = "#cccccc";
+          fg = "white";
           bg = "#2d2d2d";
         };
         sep_left = {
@@ -184,130 +256,186 @@
           close = "";
         };
         perm_type = {
-          fg = "#6699cc";
+          fg = "blue";
         };
         perm_read = {
-          fg = "#99cc99";
+          fg = "green";
         };
         perm_write = {
-          fg = "#ffcc66";
+          fg = "yellow";
         };
         perm_exec = {
-          fg = "#f2777a";
+          fg = "red";
         };
         perm_sep = {
-          fg = "#666666";
+          fg = "gray";
         };
       };
+
+      # --- Input Popup ---
       input = {
         border = {
-          fg = "#6699cc";
+          fg = "blue";
         };
         title = {
-          fg = "#cccccc";
+          fg = "white";
         };
         value = {
-          fg = "#ffffff";
+          fg = "lightwhite";
         };
         selected = {
           reversed = true;
         };
       };
+
+      # --- Selection Dialog ---
       select = {
         border = {
-          fg = "#6699cc";
+          fg = "blue";
         };
         active = {
-          fg = "#99cc99";
+          fg = "green";
         };
         inactive = {
-          fg = "#999999";
+          fg = "gray";
         };
       };
-      tasks = {
+
+      # --- Confirmation Dialog ---
+      confirm = {
         border = {
-          fg = "#6699cc";
+          fg = "blue";
         };
         title = {
-          fg = "#cccccc";
+          fg = "blue";
+          bold = true;
+        };
+        content = {
+          fg = "white";
+        };
+        list = {
+          fg = "white";
+        };
+        btn_yes = {
+          fg = "#2d2d2d";
+          bg = "green";
+          bold = true;
+        };
+        btn_no = {
+          fg = "white";
+          bg = "#393939";
+        };
+      };
+
+      # --- Completion Popup ---
+      cmp = {
+        border = {
+          fg = "blue";
+        };
+        active = {
+          fg = "#2d2d2d";
+          bg = "blue";
+        };
+        inactive = {
+          fg = "white";
+        };
+      };
+
+      # --- Tasks Manager Popup ---
+      tasks = {
+        border = {
+          fg = "blue";
+        };
+        title = {
+          fg = "white";
         };
         hovered = {
           underline = true;
         };
       };
+
+      # --- Which-Key Popup ---
       which = {
         mask = {
           bg = "#2d2d2d";
         };
         cand = {
-          fg = "#6699cc";
+          fg = "blue";
         };
         rest = {
-          fg = "#cccccc";
+          fg = "white";
         };
         desc = {
-          fg = "#999999";
+          fg = "gray";
         };
         separator = "  ";
       };
+
+      # --- Help Menu ---
       help = {
-        on = {
-          fg = "#99cc99";
+        chord = {
+          fg = "green";
         };
-        run = {
-          fg = "#6699cc";
+        action = {
+          fg = "blue";
         };
         desc = {
-          fg = "#cccccc";
+          fg = "white";
         };
         hovered = {
           reversed = true;
         };
         footer = {
-          fg = "#666666";
+          fg = "gray";
         };
       };
+
+      # --- Notifications ---
       notify = {
         title_info = {
-          fg = "#99cc99";
+          fg = "green";
         };
         title_warn = {
-          fg = "#ffcc66";
+          fg = "yellow";
         };
         title_error = {
-          fg = "#f2777a";
+          fg = "red";
         };
       };
+
+      # --- File Type Overrides ---
       filetype = {
         rules = [
           {
             url = "*/";
-            fg = "#6699cc";
+            fg = "blue";
             bold = true;
           }
           {
             url = "*";
             is = "link";
-            fg = "#66cccc";
+            fg = "cyan";
           }
           {
             url = "*";
             is = "exec";
-            fg = "#99cc99";
+            fg = "green";
           }
         ];
       };
+
+      # --- Icon Overrides ---
       icon = {
         prepend_conds = [
           {
             "if" = "dir & hovered";
             text = "";
-            fg = "#6699cc";
+            fg = "blue";
           }
           {
             "if" = "dir";
             text = "";
-            fg = "#6699cc";
+            fg = "yellow";
           }
         ];
       };

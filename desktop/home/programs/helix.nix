@@ -162,185 +162,532 @@ in
     };
     themes = {
       tomorrow-night-eighties = {
-        "ui.background" = {
+        # Custom palette additions for colors missing from standard 16 ANSI slots
+        palette = {
           bg = "#2d2d2d";
+          current_line = "#393939";
+          selection = "#515151";
+          orange = "#f99157";
+        };
+
+        # Base UI
+        "ui.background" = {
+          bg = "bg";
         };
         "ui.text" = {
-          fg = "#cccccc";
+          fg = "white";
         };
         "ui.text.focus" = {
-          fg = "#ffffff";
+          fg = "light-white";
+          modifiers = [ "bold" ];
         };
         "ui.text.inactive" = {
-          fg = "#999999";
+          fg = "light-black";
         };
+        "ui.text.info" = {
+          fg = "blue";
+        };
+        "ui.text.directory" = {
+          fg = "blue";
+          modifiers = [ "bold" ];
+        };
+        "ui.text.symlink" = {
+          fg = "cyan";
+        };
+
+        # Line Numbers & Gutters
         "ui.linenr" = {
-          fg = "#666666";
+          fg = "light-black";
         };
         "ui.linenr.selected" = {
-          fg = "#cccccc";
+          fg = "white";
+          modifiers = [ "bold" ];
         };
+        "ui.gutter" = {
+          bg = "bg";
+        };
+        "ui.gutter.selected" = {
+          fg = "white";
+        };
+
+        # Cursor & Selection
         "ui.cursorline.primary" = {
-          bg = "#393939";
+          bg = "current_line";
+        };
+        "ui.cursorline.secondary" = {
+          bg = "current_line";
+        };
+        "ui.cursorcolumn.primary" = {
+          bg = "current_line";
+        };
+        "ui.cursorcolumn.secondary" = {
+          bg = "current_line";
         };
         "ui.selection" = {
-          bg = "#515151";
+          bg = "selection";
+        };
+        "ui.selection.primary" = {
+          bg = "selection";
+        };
+        "ui.selection.secondary" = {
+          bg = "current_line";
         };
         "ui.cursor" = {
-          fg = "#2d2d2d";
-          bg = "#cccccc";
+          fg = "bg";
+          bg = "white";
+        };
+        "ui.cursor.normal" = {
+          fg = "bg";
+          bg = "white";
+        };
+        "ui.cursor.insert" = {
+          fg = "bg";
+          bg = "green";
+        };
+        "ui.cursor.select" = {
+          fg = "bg";
+          bg = "magenta";
         };
         "ui.cursor.match" = {
-          fg = "#2d2d2d";
-          bg = "#ffcc66";
+          fg = "bg";
+          bg = "yellow";
         };
+        "ui.cursor.primary" = {
+          fg = "bg";
+          bg = "white";
+        };
+
+        # Statusline & Bufferline
         "ui.statusline" = {
-          fg = "#cccccc";
-          bg = "#393939";
+          fg = "white";
+          bg = "current_line";
         };
         "ui.statusline.inactive" = {
-          fg = "#999999";
-          bg = "#2d2d2d";
+          fg = "light-black";
+          bg = "bg";
         };
+        "ui.statusline.normal" = {
+          fg = "bg";
+          bg = "blue";
+          modifiers = [ "bold" ];
+        };
+        "ui.statusline.insert" = {
+          fg = "bg";
+          bg = "green";
+          modifiers = [ "bold" ];
+        };
+        "ui.statusline.select" = {
+          fg = "bg";
+          bg = "magenta";
+          modifiers = [ "bold" ];
+        };
+        "ui.statusline.separator" = {
+          fg = "light-black";
+          bg = "current_line";
+        };
+        "ui.bufferline" = {
+          fg = "light-black";
+          bg = "bg";
+        };
+        "ui.bufferline.active" = {
+          fg = "white";
+          bg = "current_line";
+          modifiers = [ "bold" ];
+        };
+        "ui.bufferline.background" = {
+          bg = "bg";
+        };
+
+        # Popups & Pickers
         "ui.popup" = {
-          fg = "#cccccc";
-          bg = "#393939";
+          fg = "white";
+          bg = "current_line";
+        };
+        "ui.popup.info" = {
+          fg = "white";
+          bg = "current_line";
         };
         "ui.menu" = {
-          fg = "#cccccc";
-          bg = "#393939";
+          fg = "white";
+          bg = "current_line";
         };
         "ui.menu.selected" = {
-          fg = "#2d2d2d";
-          bg = "#cccccc";
+          fg = "bg";
+          bg = "white";
+        };
+        "ui.menu.scroll" = {
+          fg = "light-black";
+          bg = "bg";
         };
         "ui.window" = {
-          fg = "#515151";
+          fg = "current_line";
         };
+        "ui.help" = {
+          fg = "white";
+          bg = "current_line";
+        };
+        "ui.picker.header" = {
+          fg = "blue";
+          modifiers = [ "bold" ];
+        };
+        "ui.picker.header.column" = {
+          fg = "light-black";
+        };
+        "ui.picker.header.column.active" = {
+          fg = "yellow";
+          modifiers = [ "bold" ];
+        };
+        "ui.highlight" = {
+          bg = "selection";
+        };
+
+        # Virtual Text & Inlay Hints
         "ui.virtual" = {
-          fg = "#393939";
+          fg = "selection";
         };
         "ui.virtual.indent-guide" = {
-          fg = "#393939";
+          fg = "selection";
         };
         "ui.virtual.ruler" = {
-          bg = "#393939";
+          bg = "current_line";
         };
         "ui.virtual.whitespaces" = {
-          fg = "#393939";
+          fg = "selection";
         };
-        "comment" = {
-          fg = "#999999";
+        "ui.virtual.inlay-hint" = {
+          fg = "light-black";
           modifiers = [ "italic" ];
         };
+        "ui.virtual.inlay-hint.parameter" = {
+          fg = "light-black";
+          modifiers = [ "italic" ];
+        };
+        "ui.virtual.inlay-hint.type" = {
+          fg = "yellow";
+          modifiers = [ "italic" ];
+        };
+        "ui.virtual.wrap" = {
+          fg = "selection";
+        };
+        "ui.virtual.jump-label" = {
+          fg = "orange";
+          modifiers = [ "bold" ];
+        };
+
+        # Debugger
+        "ui.debug.breakpoint" = {
+          fg = "red";
+        };
+        "ui.debug.active" = {
+          fg = "yellow";
+        };
+        "ui.highlight.frameline" = {
+          bg = "current_line";
+        };
+
+        # Code Syntax Highlighting
+        "comment" = {
+          fg = "light-black";
+          modifiers = [ "italic" ];
+        };
+        "comment.line" = {
+          fg = "light-black";
+          modifiers = [ "italic" ];
+        };
+        "comment.block" = {
+          fg = "light-black";
+          modifiers = [ "italic" ];
+        };
+        "comment.documentation" = {
+          fg = "light-black";
+          modifiers = [ "italic" ];
+        };
+        "comment.unused" = {
+          fg = "light-black";
+          modifiers = [ "line-through" ];
+        };
+
         "keyword" = {
-          fg = "#cc99cc";
+          fg = "magenta";
         };
         "keyword.control" = {
-          fg = "#cc99cc";
+          fg = "magenta";
+        };
+        "keyword.control.conditional" = {
+          fg = "magenta";
+        };
+        "keyword.control.repeat" = {
+          fg = "magenta";
+        };
+        "keyword.control.import" = {
+          fg = "magenta";
+        };
+        "keyword.control.return" = {
+          fg = "magenta";
+        };
+        "keyword.control.exception" = {
+          fg = "magenta";
         };
         "keyword.function" = {
-          fg = "#cc99cc";
+          fg = "magenta";
         };
         "keyword.operator" = {
-          fg = "#cc99cc";
+          fg = "magenta";
         };
+        "keyword.directive" = {
+          fg = "magenta";
+        };
+        "keyword.storage" = {
+          fg = "magenta";
+        };
+        "keyword.storage.type" = {
+          fg = "magenta";
+        };
+        "keyword.storage.modifier" = {
+          fg = "magenta";
+        };
+
         "type" = {
-          fg = "#ffcc66";
+          fg = "yellow";
         };
         "type.builtin" = {
-          fg = "#ffcc66";
+          fg = "yellow";
+        };
+        "type.enum" = {
+          fg = "yellow";
+        };
+        "type.enum.variant" = {
+          fg = "orange";
         };
         "constructor" = {
-          fg = "#6699cc";
+          fg = "blue";
         };
+
         "function" = {
-          fg = "#6699cc";
+          fg = "blue";
         };
         "function.builtin" = {
-          fg = "#6699cc";
+          fg = "blue";
+        };
+        "function.method" = {
+          fg = "blue";
+        };
+        "function.method.private" = {
+          fg = "blue";
         };
         "function.macro" = {
-          fg = "#6699cc";
+          fg = "blue";
         };
+        "function.special" = {
+          fg = "blue";
+        };
+
         "variable" = {
-          fg = "#cccccc";
+          fg = "white";
         };
         "variable.builtin" = {
-          fg = "#f99157";
+          fg = "orange";
         };
         "variable.parameter" = {
-          fg = "#cccccc";
+          fg = "white";
         };
         "variable.other.member" = {
-          fg = "#f2777a";
+          fg = "red";
         };
+
         "constant" = {
-          fg = "#f99157";
+          fg = "orange";
         };
         "constant.builtin" = {
-          fg = "#f99157";
+          fg = "orange";
+        };
+        "constant.builtin.boolean" = {
+          fg = "orange";
         };
         "constant.numeric" = {
-          fg = "#f99157";
+          fg = "orange";
         };
+        "constant.numeric.integer" = {
+          fg = "orange";
+        };
+        "constant.numeric.float" = {
+          fg = "orange";
+        };
+        "constant.character" = {
+          fg = "orange";
+        };
+        "constant.character.escape" = {
+          fg = "cyan";
+        };
+
         "string" = {
-          fg = "#99cc99";
+          fg = "green";
         };
         "string.regexp" = {
-          fg = "#66cccc";
+          fg = "cyan";
         };
+        "string.special" = {
+          fg = "cyan";
+        };
+        "string.special.path" = {
+          fg = "green";
+          modifiers = [ "underlined" ];
+        };
+        "string.special.url" = {
+          fg = "cyan";
+          modifiers = [ "underlined" ];
+        };
+        "string.special.symbol" = {
+          fg = "orange";
+        };
+
         "operator" = {
-          fg = "#f2777a";
+          fg = "cyan";
         };
         "punctuation" = {
-          fg = "#cccccc";
+          fg = "white";
         };
         "punctuation.bracket" = {
-          fg = "#cccccc";
+          fg = "white";
         };
         "punctuation.delimiter" = {
-          fg = "#cccccc";
+          fg = "white";
         };
+        "punctuation.special" = {
+          fg = "red";
+        };
+
         "label" = {
-          fg = "#cc99cc";
+          fg = "magenta";
         };
         "namespace" = {
-          fg = "#6699cc";
+          fg = "blue";
         };
         "attribute" = {
-          fg = "#ffcc66";
+          fg = "yellow";
         };
+        "special" = {
+          fg = "yellow";
+        };
+
+        # Prose / Markup
         "markup.heading" = {
-          fg = "#6699cc";
+          fg = "blue";
+          modifiers = [ "bold" ];
+        };
+        "markup.heading.1" = {
+          fg = "blue";
+          modifiers = [ "bold" ];
+        };
+        "markup.heading.2" = {
+          fg = "cyan";
+          modifiers = [ "bold" ];
+        };
+        "markup.heading.3" = {
+          fg = "green";
+          modifiers = [ "bold" ];
+        };
+        "markup.heading.4" = {
+          fg = "yellow";
+          modifiers = [ "bold" ];
+        };
+        "markup.heading.5" = {
+          fg = "magenta";
+          modifiers = [ "bold" ];
+        };
+        "markup.heading.6" = {
+          fg = "red";
+          modifiers = [ "bold" ];
+        };
+        "markup.list" = {
+          fg = "red";
+        };
+        "markup.list.numbered" = {
+          fg = "yellow";
+        };
+        "markup.list.unnumbered" = {
+          fg = "red";
         };
         "markup.bold" = {
-          fg = "#ffcc66";
+          fg = "yellow";
           modifiers = [ "bold" ];
         };
         "markup.italic" = {
-          fg = "#cc99cc";
+          fg = "magenta";
+          modifiers = [ "italic" ];
+        };
+        "markup.strikethrough" = {
+          modifiers = [ "line-through" ];
+        };
+        "markup.raw" = {
+          fg = "green";
+        };
+        "markup.raw.inline" = {
+          fg = "green";
+        };
+        "markup.raw.block" = {
+          fg = "green";
+        };
+        "markup.quote" = {
+          fg = "light-black";
           modifiers = [ "italic" ];
         };
         "markup.link.url" = {
-          fg = "#66cccc";
+          fg = "cyan";
           modifiers = [ "underlined" ];
         };
         "markup.link.text" = {
-          fg = "#6699cc";
+          fg = "blue";
         };
-        "error" = "#f2777a";
-        "warning" = "#ffcc66";
-        "info" = "#6699cc";
-        "hint" = "#66cccc";
+        "markup.link.label" = {
+          fg = "magenta";
+        };
+
+        # Diagnostics & Diff
+        "error" = "red";
+        "warning" = "yellow";
+        "info" = "blue";
+        "hint" = "cyan";
+        "error.diagnostic.inline" = {
+          fg = "red";
+          modifiers = [ "bold" ];
+        };
+        "warning.diagnostic.inline" = {
+          fg = "yellow";
+          modifiers = [ "bold" ];
+        };
+        "info.diagnostic.inline" = {
+          fg = "blue";
+          modifiers = [ "bold" ];
+        };
+        "hint.diagnostic.inline" = {
+          fg = "cyan";
+          modifiers = [ "bold" ];
+        };
+        "diagnostic.deprecated" = {
+          modifiers = [ "line-through" ];
+        };
+        "diagnostic.unnecessary" = {
+          fg = "light-black";
+        };
+
         "diff.plus" = {
-          fg = "#99cc99";
+          fg = "green";
         };
         "diff.minus" = {
-          fg = "#f2777a";
+          fg = "red";
         };
         "diff.delta" = {
-          fg = "#ffcc66";
+          fg = "yellow";
+        };
+        "diff.plus.gutter" = {
+          fg = "green";
+        };
+        "diff.minus.gutter" = {
+          fg = "red";
+        };
+        "diff.delta.gutter" = {
+          fg = "yellow";
         };
       };
     };

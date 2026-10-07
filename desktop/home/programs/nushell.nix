@@ -1,9 +1,17 @@
 { ... }: {
-  # https://www.nushell.sh/book/configuration.html
   programs.nushell = {
     enable = true;
     settings = {
+      color_config = {
+        shape_external = "white";
+        shape_extarnal_resolved = "blue";
+        shape_internalcall = "blue";
+      };
+      error_style = "short";
       show_banner = false;
+      table = {
+        mode = "none";
+      };
       history = {
         max_size = 256;
         file_format = "sqlite";
@@ -24,9 +32,5 @@
       nxpurge = "sudo nix-collect-garbage -d";
       tosleep = "systemctl suspend";
     };
-  };
-
-  home.sessionVariables = {
-    CLICOLOR = "1";
   };
 }
