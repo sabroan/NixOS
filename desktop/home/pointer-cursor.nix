@@ -10,10 +10,9 @@
     x11 = {
       enable = true;
     };
-    package = pkgs.numix-cursor-theme;
-    name = "Numix-Cursor";
-    # package = pkgs.phinger-cursors;
-    # name = "phinger-cursors-dark";
-    size = 24;
+    # package = pkgs.numix-cursor-theme;
+    # name = "Numix-Cursor";
+    package = pkgs.phinger-cursors;
+    name = "phinger-cursors-light";
   };
 }
