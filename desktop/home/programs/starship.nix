@@ -7,25 +7,6 @@
     ];
     settings = {
       add_newline = true;
-      palette = "tomorrow-night-eighties";
-      palettes = {
-        tomorrow-night-eighties = {
-          # Standard ANSI colors (inherits directly from Foot / terminal theme)
-          white = "white";
-          red = "red";
-          yellow = "yellow";
-          green = "green";
-          cyan = "cyan";
-          blue = "blue";
-          purple = "purple";
-
-          # Custom Eighties palette additions (missing from standard ANSI slots)
-          black = "#2D2D2D";
-          dark = "#515151";
-          gray = "#999999";
-          orange = "#F99157";
-        };
-      };
 
       format = builtins.concatStringsSep "" [
         "$os"

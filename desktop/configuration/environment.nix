@@ -1,10 +1,6 @@
-{ ... }: {
+{ pkgs, ... }: {
   environment = {
     defaultPackages = [ ];
-    pathsToLink = [
-      "/share/applications"
-      "/share/xdg-desktop-portal"
-    ];
     persistence."/nix/state/root" = {
       hideMounts = true;
       directories = [
@@ -15,19 +11,13 @@
           mode = "0700";
         }
         {
-          directory = "/var/lib/iwd";
+          directory = "/etc/nixos";
           user = "root";
           group = "root";
-          mode = "0700";
+          mode = "0744";
         }
         {
           directory = "/var/lib/nixos";
-          user = "root";
-          group = "root";
-          mode = "0755";
-        }
-        {
-          directory = "/var/lib/systemd/coredump";
           user = "root";
           group = "root";
           mode = "0755";

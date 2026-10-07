@@ -1,46 +1,20 @@
 { pkgs, ... }: {
   xdg = {
-    autostart = {
-      enable = false;
-      readOnly = true;
-    };
-    mimeApps = {
-      enable = true;
-      defaultApplications = {
-        "x-scheme-handler/http" = "zen-beta.desktop";
-        "x-scheme-handler/https" = "zen-beta.desktop";
-      };
-    };
     portal = {
       enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
-        xdg-desktop-portal-termfilechooser
-        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gnome
       ];
       config = {
         common = {
           default = [
-            "wlr"
             "gtk"
-          ];
-        };
-        sway = {
-          default = [
-            "wlr"
-            "gtk"
-          ];
-          "org.freedesktop.impl.portal.ScreenCast" = [
-            "wlr"
-          ];
-          "org.freedesktop.impl.portal.Screenshot" = [
-            "wlr"
           ];
         };
       };
     };
   };
-
   home.packages = with pkgs; [
     xdg-utils
   ];

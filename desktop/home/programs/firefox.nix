@@ -1,11 +1,9 @@
-{ inputs, ... }: {
-  imports = [
-    inputs.zen-browser.homeModules.beta
-  ];
-
-  programs.zen-browser = {
+{ ... }: {
+  programs.firefoxpwa = {
     enable = true;
-    setAsDefaultBrowser = true;
+  };
+  programs.firefox = {
+    enable = true;
     policies = {
       # https://mozilla.github.io/policy-templates/
       BlockAboutAddons = true;
@@ -206,43 +204,15 @@
             };
           };
         };
-        # https://github.com/zen-browser/desktop/blob/dev/prefs/zen/
-        settings = {
-          "startup.homepage_welcome_url.additional" = "";
-          "zen.mods.AudioIndicatorEnhanced.audioWave.enabled" = true;
-          "zen.tabs.show-newtab-vertical" = false;
-          "zen.tabs.vertical.right-side" = false;
-          "zen.theme.content-element-separation" = 0;
-          "zen.theme.styled-status-panel" = true;
-          "zen.updates.show-update-notification" = false;
-          "zen.view.compact.enable-at-startup" = false;
-          "zen.view.compact.hide-tabbar" = true;
-          "zen.view.compact.hide-toolbar" = false;
-          "zen.view.compact.show-background-tab-toast" = false;
-          "zen.view.show-clear-tabs-button" = false;
-          "zen.view.show-newtab-button-top" = false;
-          "zen.view.use-single-toolbar" = false;
-          "zen.view.window.scheme" = 0;
-          "zen.welcome-screen.seen" = true;
-          # "zen.window-sync.enabled" = false;
-          # "zen.window-sync.prefer-unsynced-windows" = true;
-        };
-        # https://zen-browser.app/mods/{UUID}
-        mods = [
-          "f7c71d9a-bce2-420f-ae44-a64bd92975ab" # Better Unloaded Tabs
-          "2317fd93-c3ed-4f37-b55a-304c1816819e" # Audio Indicator Enhanced
-          "c8d9e6e6-e702-4e15-8972-3596e57cf398" # Zen Back Forward
-        ];
       };
     };
   };
 
   home = {
     file = {
-      ".config/zen/default/browser-extension-data/twitch5-fork@traumvogel/storage.js" = {
+      ".config/firefox/default/browser-extension-data/twitch5-fork@traumvogel/storage.js" = {
         force = true;
         text = builtins.toJSON {
-          #auto-redirect-allowed = true;
           auto-redirect-seen = true;
           buffer-preset-selected = "J0128";
           chat-state = 0;

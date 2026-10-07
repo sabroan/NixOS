@@ -9,7 +9,7 @@
       };
       overdrive = {
         enable = true;
-        ppfeaturemask = "0xfffd7fff"; # 0xffffffff
+        ppfeaturemask = "0xfffd7fff";
       };
     };
     bluetooth = {
@@ -26,7 +26,6 @@
       enable = true;
       enable32Bit = true;
       extraPackages = with pkgs; [
-        libva-utils
         libva-vdpau-driver
         libvdpau-va-gl
       ];

@@ -2,11 +2,6 @@
   programs.nushell = {
     enable = true;
     settings = {
-      color_config = {
-        shape_external = "white";
-        shape_extarnal_resolved = "blue";
-        shape_internalcall = "blue";
-      };
       error_style = "short";
       show_banner = false;
       table = {
@@ -28,7 +23,7 @@
       mv = "mv -i";
       rm = "rm -i";
 
-      nxupdate = "sudo nixos-rebuild switch --flake path:/nix/state/flake";
+      nxupdate = "sudo nixos-rebuild switch --flake path:/etc/nixos";
       nxpurge = "sudo nix-collect-garbage -d";
       tosleep = "systemctl suspend";
     };

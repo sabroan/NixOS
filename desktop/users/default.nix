@@ -1,29 +1,30 @@
-{
-  config,
-  load,
-  pkgs,
-  ...
-}:
-let
-  username = "default";
-in
-{
-  users.users.${username} = {
+{ config, pkgs, ... }: {
+  users.users.default = {
     description = "User";
     extraGroups = [
       "gamemode"
       "wheel"
     ];
-    hashedPasswordFile = "/nix/state/root/etc/secrets/${username}/password.psk";
+    hashedPasswordFile = "/etc/secrets/default/password.psk";
     isNormalUser = true;
     shell = pkgs.nushell;
   };
 
-  home-manager.users.${username} = {
-    imports = load.children ../home;
+  home-manager.users.default = {
+    imports = [
+      ../home/dconf.nix
+      ../home/gtk.nix
+      ../home/pointer-cursor.nix
+      ../home/programs.nix
+      ../home/qt.nix
+      ../home/services.nix
+      ../home/systemd.nix
+      ../home/xdg.nix
+    ];
     home = {
       packages = with pkgs; [
-        openmw
+        nautilus
+        # openmw
         telegram-desktop
       ];
       persistence = {
@@ -45,14 +46,14 @@ in
               directory = ".local/share/TelegramDesktop";
               mode = "0700";
             }
-            {
-              directory = ".config/zen/default/chrome";
-              mode = "0700";
-            }
+            # {
+            #   directory = ".config/zen/default/chrome";
+            #   mode = "0700";
+            # }
           ];
-          files = [
-            ".config/zen/default/zen-themes.json"
-          ];
+          # files = [
+          #   ".config/zen/default/zen-themes.json"
+          # ];
         };
       };
       stateVersion = config.system.stateVersion;

@@ -21,11 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/impermanence";
     };
-    zen-browser = {
-      inputs.home-manager.follows = "home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:0xc000022070/zen-browser-flake";
-    };
   };
 
   outputs =
@@ -39,27 +34,11 @@
       self,
       ...
     }@inputs:
-    let
-      load = {
-        all =
-          dir:
-          builtins.filter (path: nixpkgs.lib.hasSuffix ".nix" (builtins.toString path)) (
-            nixpkgs.lib.filesystem.listFilesRecursive dir
-          );
-        children =
-          dir:
-          nixpkgs.lib.mapAttrsToList (file: _: dir + "/${file}") (
-            nixpkgs.lib.filterAttrs (file: type: type == "regular" && nixpkgs.lib.hasSuffix ".nix" file) (
-              builtins.readDir dir
-            )
-          );
-      };
-    in
     {
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs load; };
+          specialArgs = { inherit inputs; };
           modules = [
             chaotic.nixosModules.default
             disko.nixosModules.disko
@@ -67,15 +46,17 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs load; };
+              home-manager.extraSpecialArgs = { inherit inputs; };
             }
             nixos-hardware.nixosModules.common-cpu-amd
             nixos-hardware.nixosModules.common-cpu-amd-pstate
             nixos-hardware.nixosModules.common-gpu-amd
             nixos-hardware.nixosModules.common-pc-ssd
             impermanence.nixosModules.impermanence
-          ]
-          ++ load.children ./desktop;
+          ] ++ [
+            ./desktop/configuration.nix
+            ./desktop/disko.nix
+          ];
         };
       };
     };
