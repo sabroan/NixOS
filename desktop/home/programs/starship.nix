@@ -10,17 +10,20 @@
       palette = "tomorrow-night-eighties";
       palettes = {
         tomorrow-night-eighties = {
-          # black = "#2D2D2D";
-          white = "#CCCCCC";
+          # Standard ANSI colors (inherits directly from Foot / terminal theme)
+          white = "white";
+          red = "red";
+          yellow = "yellow";
+          green = "green";
+          cyan = "cyan";
+          blue = "blue";
+          purple = "purple";
+
+          # Custom Eighties palette additions (missing from standard ANSI slots)
+          black = "#2D2D2D";
           dark = "#515151";
           gray = "#999999";
-          red = "#F2777A";
           orange = "#F99157";
-          yellow = "#FFCC66";
-          green = "#99CC99";
-          cyan = "#66CCCC";
-          blue = "#6699CC";
-          purple = "#CC99CC";
         };
       };
 
