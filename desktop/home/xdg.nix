@@ -13,9 +13,10 @@
     };
     portal = {
       enable = true;
-      extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-wlr
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-termfilechooser
+        xdg-desktop-portal-wlr
       ];
       config = {
         common = {

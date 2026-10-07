@@ -103,6 +103,6 @@ cd "${FLAKE_DIR}"
 
 nix --extra-experimental-features "nix-command flakes" flake update --commit-lock-file || true
 
-nixos-install --no-root-passwd --root /mnt --flake "${FLAKE_DIR}#${HOST}" --option 'extra-substituters' 'https://nyx-cache.chaotic.cx/' --option extra-trusted-public-keys "nyx-cache.chaotic.cx:dJxTrgMC3V3cFfyIiBQDQorG6k1LsqurH/srpMSq7qk="
+nixos-install --no-root-passwd --root /mnt --flake path:"${FLAKE_DIR}#${HOST}" --option 'extra-substituters' 'https://nyx-cache.chaotic.cx/' --option extra-trusted-public-keys "nyx-cache.chaotic.cx:dJxTrgMC3V3cFfyIiBQDQorG6k1LsqurH/srpMSq7qk="
 
 echo "Installation complete! You can reboot now."
