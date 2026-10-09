@@ -6,6 +6,9 @@
     nixos-hardware = {
       url = "github:nixos/nixos-hardware/master";
     };
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+    };
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     };
@@ -29,6 +32,7 @@
       disko,
       home-manager,
       impermanence,
+      nix-vscode-extensions,
       nixos-hardware,
       nixpkgs,
       self,
@@ -40,6 +44,11 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
+            {
+              nixpkgs.overlays = [
+                nix-vscode-extensions.overlays.default
+              ];
+            }
             chaotic.nixosModules.default
             disko.nixosModules.disko
             home-manager.nixosModules.home-manager

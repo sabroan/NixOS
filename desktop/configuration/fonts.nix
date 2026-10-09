@@ -11,7 +11,7 @@
       cache32Bit = true;
       hinting = {
         enable = true;
-        style = "full";
+        style = "slight";
       };
       subpixel = {
         rgba = "rgb";

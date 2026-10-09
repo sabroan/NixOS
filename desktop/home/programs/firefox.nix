@@ -1,20 +1,24 @@
 { ... }: {
-  programs.firefoxpwa = {
-    enable = true;
-  };
   programs.firefox = {
     enable = true;
     policies = {
-      # https://mozilla.github.io/policy-templates/
-      BlockAboutAddons = true;
+      # https://firefox-admin-docs.mozilla.org/reference/policies/
+      AutofillAddressEnabled = false;
+      AutofillCreditCardEnabled = false;
+      # BlockAboutAddons = true;
       BlockAboutProfiles = true;
+      ClearOnShutdown = true;
+      ContentAnalysisTelemetry = {
+        Enabled = false;
+        UrlLogging = "none";
+      };
+      DisableAccounts = true;
       DisableAppUpdate = true;
       DisableFeedbackCommands = true;
       DisableFirefoxAccounts = true;
       DisableFirefoxStudies = true;
       DisableFormHistory = true;
       DisableMasterPasswordCreation = true;
-      DisablePocket = true;
       DisableProfileImport = true;
       DisableRemoteImprovements = true;
       DisableSetDesktopBackground = true;
@@ -22,28 +26,53 @@
       DisableTelemetry = true;
       DontCheckDefaultBrowser = true;
       EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
         Category = "strict";
         Cryptomining = true;
-        Fingerprinting = true;
         EmailTracking = true;
+        Fingerprinting = true;
+        Locked = true;
+        SuspectedFingerprinting = true;
+        Value = true;
       };
       EncryptedMediaExtensions = {
         Enabled = true;
+        Locked = true;
       };
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
+          default_area = "menupanel";
         };
         "twitch5-fork@traumvogel" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/alternate-player-for-twitch/latest.xpi";
           installation_mode = "force_installed";
         };
       };
+      FirefoxHome = {
+        Highlights = false;
+        Locked = true;
+        Pocket = false;
+        Search = true;
+        Snippets = false;
+        SponsoredPocket = false;
+        SponsoredStories = false;
+        SponsoredTopSites = false;
+        Stories = false;
+        TopSites = false;
+        Widgets = {
+          Enabled = false;
+        };
+      };
+      FirefoxSuggest = {
+        ImproveSuggest = false;
+        Locked = true;
+        SponsoredSuggestions = false;
+        WebSuggestions = false;
+      };
       HardwareAcceleration = true;
       Homepage = {
+        Locked = true;
         StartPage = "none";
       };
       ManualAppUpdateOnly = true;
@@ -91,41 +120,26 @@
         Default = true;
         Locked = false;
       };
-      # https://mozilla.github.io/policy-templates/#preferences
-      # https://searchfox.org/firefox-main/source/modules/libpref/init/StaticPrefList.yaml
       Preferences = {
         "browser.cache.disk.enable" = false;
-        "browser.cache.memory.capacity" = 65536;
         "browser.newtab.preload" = false;
-        "browser.sessionstore.interval" = 86400000;
-        "browser.sessionstore.max_tabs_undo" = 2;
         "browser.sessionstore.privacy_level" = 2;
         "browser.sessionstore.resume_from_crash" = false;
         "browser.tabs.unloadOnLowMemory" = true;
+        "browser.theme.native-theme" = false;
         "browser.translations.automaticallyPopup" = false;
-        "browser.urlbar.suggest.bookmark" = false;
-        "browser.urlbar.suggest.clipboard" = false;
-        "browser.urlbar.suggest.engines" = false;
-        "browser.urlbar.suggest.history" = false;
-        "browser.urlbar.suggest.openpage" = false;
-        "browser.urlbar.suggest.quickactions" = false;
-        "browser.urlbar.suggest.recentsearches" = false;
-        "browser.urlbar.suggest.semanticHistory.minLength" = 0;
-        "browser.urlbar.suggest.topsites" = false;
         "devtools.command-button-measure.enabled" = true;
         "devtools.command-button-rulers.enabled" = true;
         "devtools.theme" = "dark";
         "devtools.toolbox.host" = "right";
-        "dom.ipc.processCount" = 4;
-        "extensions.formautofill.creditCards.enabled" = false;
         "media.webspeech.recognition.enable" = false;
+        "media.webspeech.recognition.install_on_start" = false;
         "media.webspeech.synth.dont_notify_on_error" = true;
         "media.webspeech.synth.enabled" = false;
         "ui.systemUsesDarkTheme" = 1;
-        "widget.gtk.rounded-bottom-corners.enabled" = false;
       };
+      PrintingEnabled = false;
       PromptForDownloadLocation = true;
-      SanitizeOnShutdown = true;
       SearchEngines = {
         Default = "DuckDuckGo";
         PreventInstalls = true;
@@ -148,6 +162,8 @@
         FirefoxLabs = false;
         Locked = true;
       };
+      UseSystemPrintDialog = false;
+      XSLTEnabled = false;
     };
     profiles = {
       default = {
@@ -210,7 +226,7 @@
 
   home = {
     file = {
-      ".config/firefox/default/browser-extension-data/twitch5-fork@traumvogel/storage.js" = {
+      ".config/mozilla/firefox/default/browser-extension-data/twitch5-fork@traumvogel/storage.js" = {
         force = true;
         text = builtins.toJSON {
           auto-redirect-seen = true;
