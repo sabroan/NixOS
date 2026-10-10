@@ -27,6 +27,9 @@
       core-developer-tools = {
         enable = false;
       };
+      gnome-keyring = {
+        enable = true;
+      };
     };
     gvfs = {
       enable = true;
