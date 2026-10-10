@@ -35,7 +35,7 @@
       "systemd.show_status=auto"
       "udev.log_level=notice"
       "udev.log_priority=notice"
-      "usbcore.quirks=1a2c:6b04:b,09da:9066:b" # Prevent S0leep for USB Mouse & Keyboard
+      "usbcore.quirks=1a2c:6b04:b,09da:9066:b" # Prevent Sleep for USB Mouse & Keyboard
       "nowatchdog"
       "nmi_watchdog=0"
     ];
