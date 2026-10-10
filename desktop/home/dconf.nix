@@ -22,7 +22,6 @@
       };
       "org/gnome/desktop/notifications" = {
         show-in-lock-screen = false;
-        show-banners = false;
       };
       "org/gnome/desktop/privacy" = {
         disable-camera = true;
@@ -43,10 +42,6 @@
           appindicator.extensionUuid
           primary-input-on-lockscreen.extensionUuid
         ];
-      };
-      "org/gnome/shell/extensions/medialine" = {
-        panel-index = 1;
-        panel-position = "left";
       };
     };
   };
