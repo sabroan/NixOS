@@ -38,10 +38,8 @@
         "/etc/machine-id"
       ];
     };
-    sessionVariables = {
-      AMD_VULKAN_ICD = "RADV";
-    };
     systemPackages = with pkgs; [
+      fragments
       gnome-autoar
       gnome-console
       gnome-system-monitor
