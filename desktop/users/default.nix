@@ -24,7 +24,7 @@
     ];
     home = {
       packages = with pkgs; [
-        # openmw
+        openmw
         telegram-desktop
       ];
       persistence = {

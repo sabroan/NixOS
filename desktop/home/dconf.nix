@@ -38,9 +38,6 @@
         disable-user-extensions = false;
         enabled-extensions = with pkgs.gnomeExtensions; [
           appindicator.extensionUuid
-          # advanced-media-controller.extensionUuid
-          # medialine.extensionUuid
-          # now-playing-card.extensionUuid
           primary-input-on-lockscreen.extensionUuid
         ];
       };
@@ -53,9 +50,6 @@
 
   home.packages = with pkgs.gnomeExtensions; [
     appindicator
-    # advanced-media-controller
-    # medialine
-    # now-playing-card
     primary-input-on-lockscreen
   ];
 }
