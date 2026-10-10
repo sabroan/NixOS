@@ -22,10 +22,7 @@
       ../home/xdg.nix
     ];
     home = {
-      packages = with pkgs; [
-        openmw
-        telegram-desktop
-      ];
+      packages = [ ];
       persistence = {
         "/nix/state/home" = {
           directories = [
@@ -43,14 +40,6 @@
             }
             {
               directory = ".local/share/Steam";
-              mode = "0700";
-            }
-            {
-              directory = ".local/share/TelegramDesktop";
-              mode = "0700";
-            }
-            {
-              directory = ".config/Code/User/globalStorage/bmewburn.vscode-intelephense-client";
               mode = "0700";
             }
           ];

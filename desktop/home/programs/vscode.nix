@@ -1,8 +1,21 @@
 { lib, pkgs, ... }: {
-  home.packages = with pkgs; [
-    nil
-    nixfmt
-  ];
+  home = {
+    packages = with pkgs; [
+      nil
+      nixfmt
+    ];
+    persistence = {
+      "/nix/state/home" = {
+        directories = [
+          {
+            directory = ".config/Code/User/globalStorage";
+            mode = "0700";
+          }
+        ];
+      };
+    };
+  };
+
   programs.vscode = {
     enable = true;
     profiles = {
@@ -27,7 +40,17 @@
           usernamehw.errorlens
         ];
         userSettings = {
+          "chat.agent.codeBlockProgress" = false;
+          "chat.agent.enabled" = false;
+          "chat.agent.thinking.generateTitles" = false;
+          "chat.detectParticipant.enabled" = false;
           "chat.disableAIFeatures" = true;
+          "chat.extensionTools.enabled" = false;
+          "chat.extensionUnification.enabled" = false;
+          "chat.implicitContext.suggestedContext" = false;
+          "chat.math.enabled" = false;
+          "chat.tools.todos.showWidget" = false;
+          "chat.viewSessions.enabled" = false;
           "editor.cursorBlinking" = "blink";
           "editor.cursorSmoothCaretAnimation" = "off";
           "editor.cursorStyle" = "line";
@@ -82,7 +105,7 @@
           "terminal.integrated.scrollback" = 100;
           "terminal.integrated.smoothScrolling" = true;
           "window.commandCenter" = false;
-          "workbench.activityBar.location" = "bottom";
+          "workbench.activityBar.location" = "top";
           "workbench.colorTheme" = "Tomorrow Night Eighties";
           "workbench.commandPalette.history" = 0;
           "workbench.editor.editorActionsLocation" = "hidden";
