@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, lib, ... }: {
   imports = [
     ./services/lact.nix
     ./services/pipewire.nix
@@ -13,6 +13,12 @@
       };
     };
     displayManager = {
+      autoLogin = {
+        enable = true;
+        user = builtins.head (
+          lib.attrNames (lib.filterAttrs (_: user: user.isNormalUser) config.users.users)
+        );
+      };
       gdm = {
         enable = true;
       };
