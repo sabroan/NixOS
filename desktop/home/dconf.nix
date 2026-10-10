@@ -2,6 +2,9 @@
   dconf = {
     enable = true;
     settings = {
+      "org/gnome/settings-daemon/plugins/housekeeping" = {
+        donation-reminder-enabled = false;
+      };
       "org/gnome/desktop/background" = {
         color-shading-type = "solid";
         primary-color = "#000000";

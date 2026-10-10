@@ -17,7 +17,6 @@
       ../home/gtk.nix
       ../home/pointer-cursor.nix
       ../home/programs.nix
-      ../home/qt.nix
       ../home/services.nix
       ../home/systemd.nix
       ../home/xdg.nix
