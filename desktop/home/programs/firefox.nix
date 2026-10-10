@@ -5,7 +5,7 @@
       # https://firefox-admin-docs.mozilla.org/reference/policies/
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
-      # BlockAboutAddons = true;
+      BlockAboutAddons = true;
       BlockAboutProfiles = true;
       ClearOnShutdown = true;
       ContentAnalysisTelemetry = {

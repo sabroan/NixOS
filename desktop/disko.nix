@@ -58,7 +58,7 @@
               content = {
                 type = "filesystem";
                 format = "xfs";
-                mountpoint = "/mount/nvme2";
+                mountpoint = "/data";
                 mountOptions = [
                   "defaults"
                   "noatime"

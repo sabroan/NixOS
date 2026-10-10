@@ -42,7 +42,6 @@
           # medialine.extensionUuid
           # now-playing-card.extensionUuid
           primary-input-on-lockscreen.extensionUuid
-          # status-tray.extensionUuid
         ];
       };
       "org/gnome/shell/extensions/medialine" = {
@@ -58,6 +57,5 @@
     # medialine
     # now-playing-card
     primary-input-on-lockscreen
-    # status-tray
   ];
 }
