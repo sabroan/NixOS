@@ -41,8 +41,12 @@
     systemPackages = with pkgs; [
       fragments
       gnome-autoar
+      gnome-bluetooth
+      gnome-boxes
+      gnome-calendar
       gnome-console
       gnome-system-monitor
+      gnome-text-editor
       nautilus
     ];
     variables = {
