@@ -40,6 +40,7 @@
         disable-user-extensions = false;
         enabled-extensions = with pkgs.gnomeExtensions; [
           appindicator.extensionUuid
+          osd-volume-number.extensionUuid
           primary-input-on-lockscreen.extensionUuid
         ];
       };
@@ -48,6 +49,7 @@
 
   home.packages = with pkgs.gnomeExtensions; [
     appindicator
+    osd-volume-number
     primary-input-on-lockscreen
   ];
 }
