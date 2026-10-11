@@ -7,7 +7,7 @@
       enable = true;
     };
     gamemode = {
-      enable = false;
+      enable = true;
       settings = {
         general = {
           softrealtime = "auto";

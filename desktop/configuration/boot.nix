@@ -30,14 +30,15 @@
     kernelParams = [
       "amd_pstate=active"
       "mem_sleep_default=deep"
+      "nmi_watchdog=0"
+      "nowatchdog"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=notice"
+      "split_lock_mitigate=0"
       "systemd.show_status=auto"
       "udev.log_level=notice"
       "udev.log_priority=notice"
       "usbcore.quirks=1a2c:6b04:b,09da:9066:b" # Prevent Sleep for USB Mouse & Keyboard
-      "nowatchdog"
-      "nmi_watchdog=0"
     ];
     loader = {
       efi = {
