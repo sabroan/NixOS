@@ -1,4 +1,33 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+let
+  sql = {
+    insert = key: value: ''
+      INSERT OR REPLACE INTO ItemTable (key, value)
+      VALUES ('${key}', '${toString value}');
+    '';
+    state = lib.concatStringsSep "\n" (
+      lib.mapAttrsToList sql.insert {
+        "workbench.activity.showAccounts" = "false";
+        "workbench.explorer.views.state.hidden" = builtins.toJSON [
+          { id = "outline"; isHidden = true; }
+          { id = "timeline"; isHidden = true; }
+        ];
+      }
+    );
+  };
+in
+{
+  home.activation.vscodeState = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    db="$HOME/.config/Code/User/globalStorage/state.vscdb"
+    mkdir -p "$(dirname "$db")"
+    ${lib.getExe pkgs.sqlite} "$db" <<'SQL'
+    CREATE TABLE IF NOT EXISTS ItemTable (
+      key TEXT UNIQUE ON CONFLICT REPLACE,
+      value BLOB
+    );
+    ${sql.state}
+    SQL
+  '';
   home = {
     packages = with pkgs; [
       nil
@@ -8,7 +37,7 @@
       "/nix/state/home" = {
         directories = [
           {
-            directory = ".config/Code/User/globalStorage";
+            directory = ".config/Code/User/globalStorage/bmewburn.vscode-intelephense-client";
             mode = "0700";
           }
         ];
