@@ -25,9 +25,6 @@
     nushell = {
       enable = true;
     };
-    seahorse = {
-      enable = true;
-    };
     steam = {
       enable = true;
       gamescopeSession = {
