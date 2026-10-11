@@ -24,9 +24,6 @@
           ExecStart = "${lib.getExe' pkgs.power-profiles-daemon "powerprofilesctl"} set power-saver";
         };
       };
-      systemd-networkd-wait-online = {
-        enable = false;
-      };
       systemd-udev-settle = {
         enable = false;
       };
