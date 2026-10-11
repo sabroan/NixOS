@@ -9,7 +9,7 @@
       };
       history = {
         path = null;
-        max_size = 256;
+        max_size = 16;
         file_format = "sqlite";
         sync_on_enter = false;
         isolation = true;
