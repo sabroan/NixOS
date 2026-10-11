@@ -12,14 +12,25 @@
         picture-uri = "none";
         picture-uri-dark = "none";
       };
+      "org.gnome.desktop.datetime" = {
+        automatic-timezone = true;
+      };
       "org/gnome/desktop/input-sources" = {
         per-window = true;
         sources = [
-          (lib.hm.gvariant.mkTuple [ "xkb" "us" ])
-          (lib.hm.gvariant.mkTuple [ "xkb" "ua" ])
+          (lib.hm.gvariant.mkTuple [
+            "xkb"
+            "us"
+          ])
+          (lib.hm.gvariant.mkTuple [
+            "xkb"
+            "ua"
+          ])
         ];
       };
       "org/gnome/desktop/interface" = {
+        clock-show-seconds = true;
+        clock-show-weekday = true;
         color-scheme = "prefer-dark";
         font-antialiasing = "rgba";
         font-hinting = "slight";
@@ -50,6 +61,9 @@
         daily-limit-enabled = false;
         grayscale = false;
       };
+      "org/gnome/gnome-system-monitor" = {
+        show-dependencies = true;
+      };
       "org/gnome/mutter" = {
         edge-tiling = true;
       };
@@ -69,7 +83,7 @@
           osd-volume-number.extensionUuid
           primary-input-on-lockscreen.extensionUuid
         ];
-        favorite-apps = [];
+        favorite-apps = [ ];
       };
     };
   };
