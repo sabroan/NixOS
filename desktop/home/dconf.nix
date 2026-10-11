@@ -64,6 +64,7 @@
           osd-volume-number.extensionUuid
           primary-input-on-lockscreen.extensionUuid
         ];
+        favorite-apps = [];
       };
     };
   };
