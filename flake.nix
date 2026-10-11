@@ -24,6 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/impermanence";
     };
+    amethyst-mod-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:ChrisDKN/Amethyst-Mod-Manager";
+    };
   };
 
   outputs =

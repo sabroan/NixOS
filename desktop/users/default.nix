@@ -3,7 +3,6 @@
     description = "User";
     extraGroups = [
       "gamemode"
-      "networkmanager"
       "wheel"
     ];
     hashedPasswordFile = "/nix/state/root/etc/secrets/default/password.psk";
@@ -15,6 +14,7 @@
     imports = [
       ../home/dconf.nix
       ../home/gtk.nix
+      ../home/packages.nix
       ../home/pointer-cursor.nix
       ../home/programs.nix
       ../home/qt.nix
@@ -23,7 +23,6 @@
       ../home/xdg.nix
     ];
     home = {
-      packages = [ ];
       persistence = {
         "/nix/state/home" = {
           directories = [

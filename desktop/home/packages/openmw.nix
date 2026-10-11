@@ -15,18 +15,21 @@ let
   };
 in
 {
-  home.packages = [ openmw ];
-
-  home.persistence."/nix/state/home" = {
-    directories = [
-      {
-        directory = ".config/openmw";
-        mode = "0700";
-      }
-      {
-        directory = ".local/share/openmw";
-        mode = "0700";
-      }
-    ];
+  home = {
+    packages = [ openmw ];
+    persistence = {
+      "/nix/state/home" = {
+        directories = [
+          {
+            directory = ".config/openmw";
+            mode = "0700";
+          }
+          {
+            directory = ".local/share/openmw";
+            mode = "0700";
+          }
+        ];
+      };
+    };
   };
 }
