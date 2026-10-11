@@ -1,10 +1,11 @@
-{ ... }: {
+{ pkgs, ... }: {
   environment = {
     defaultPackages = [ ];
-    pathsToLink = [
-      "/share/applications"
-      "/share/xdg-desktop-portal"
-    ];
+    gnome = {
+      excludePackages = with pkgs; [
+        gnome-tour
+      ];
+    };
     persistence."/nix/state/root" = {
       hideMounts = true;
       directories = [
@@ -15,19 +16,19 @@
           mode = "0700";
         }
         {
-          directory = "/var/lib/iwd";
+          directory = "/etc/NetworkManager/system-connections";
           user = "root";
           group = "root";
           mode = "0700";
         }
         {
-          directory = "/var/lib/nixos";
+          directory = "/etc/nixos";
           user = "root";
           group = "root";
-          mode = "0755";
+          mode = "0744";
         }
         {
-          directory = "/var/lib/systemd/coredump";
+          directory = "/var/lib/nixos";
           user = "root";
           group = "root";
           mode = "0755";
@@ -37,9 +38,23 @@
         "/etc/machine-id"
       ];
     };
-    sessionVariables = {
-      AMD_VULKAN_ICD = "RADV";
-    };
+    systemPackages = with pkgs; [
+      eyedropper
+      fragments
+      gnome-autoar
+      gnome-bluetooth
+      gnome-boxes
+      gnome-calendar
+      gnome-console
+      gnome-logs
+      gnome-secrets
+      gnome-system-monitor
+      gnome-text-editor
+      loupe
+      nautilus
+      papers
+      showtime
+    ];
     variables = {
       HSA_OVERRIDE_GFX_VERSION = "11.0.0";
     };

@@ -2,21 +2,17 @@
   programs.nushell = {
     enable = true;
     settings = {
-      color_config = {
-        shape_external = "white";
-        shape_extarnal_resolved = "blue";
-        shape_internalcall = "blue";
-      };
       error_style = "short";
       show_banner = false;
       table = {
         mode = "none";
       };
       history = {
-        max_size = 256;
+        path = null;
+        max_size = 16;
         file_format = "sqlite";
-        sync_on_enter = true;
-        isolation = false;
+        sync_on_enter = false;
+        isolation = true;
         ignore_space_prefixed = true;
       };
     };
@@ -28,7 +24,7 @@
       mv = "mv -i";
       rm = "rm -i";
 
-      nxupdate = "sudo nixos-rebuild switch --flake path:/nix/state/flake";
+      nxupdate = "sudo nixos-rebuild switch --flake path:/etc/nixos";
       nxpurge = "sudo nix-collect-garbage -d";
       tosleep = "systemctl suspend";
     };

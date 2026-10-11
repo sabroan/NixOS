@@ -1,5 +1,13 @@
-{ load, ... }: {
-  imports = load.children ./programs;
+{ ... }: {
+  imports = [
+    ./programs/firefox.nix
+    ./programs/nushell.nix
+    ./programs/obs-studio.nix
+    ./programs/openmw.nix
+    ./programs/starship.nix
+    ./programs/telegram.nix
+    ./programs/vscode.nix
+  ];
   programs = {
     git = {
       enable = true;

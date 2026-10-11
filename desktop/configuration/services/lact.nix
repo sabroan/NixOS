@@ -28,7 +28,7 @@
             };
           };
           pmfw_options = {
-            zero_rpm = false;
+            zero_rpm = true;
           };
           power_cap = 190.0;
           voltage_offset = -50;

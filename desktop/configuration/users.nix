@@ -1,5 +1,7 @@
-{ lib, load, ... }: {
-  imports = load.children ./users;
+{ ... }: {
+  imports = [
+    ../users/default.nix
+  ];
   users = {
     mutableUsers = false;
     users = {

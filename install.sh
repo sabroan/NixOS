@@ -3,18 +3,17 @@ set -euo pipefail
 
 HOST="${1:?Usage: ${0} <hostname>}"
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-STATE_DIR="/mnt/nix/state";
-FLAKES_DIR="${CURRENT_DIR}/flakes";
-FLAKE_DIR="${STATE_DIR}/flake"
+STATE_DIR="/mnt/nix/state"
 ROOT_DIR="${STATE_DIR}/root"
-IWD_DIR="${ROOT_DIR}/var/lib/iwd"
-SECRETS_DIR="${ROOT_DIR}/etc/secrets"
+ETC_DIR="${ROOT_DIR}/etc"
+SECRETS_DIR="${ETC_DIR}/secrets"
+ETC_NIX_DIR="${ETC_DIR}/nixos"
 
 read -rp "Run Disko (this WILL wipe all targeted disks)? [y|Y]: " CONFIRM_DISKO
 
 if [[ "${CONFIRM_DISKO:-}" =~ ^[Yy]$ ]]; then
   echo "Running Disko formatting and mounting..."
-  nix --extra-experimental-features "nix-command flakes" run github:nix-community/disko -- --mode destroy,format,mount --yes-wipe-all-disks "${FLAKES_DIR}/${HOST}/disko.nix"
+  nix --extra-experimental-features "nix-command flakes" run github:nix-community/disko -- --mode destroy,format,mount --yes-wipe-all-disks "${CURRENT_DIR}/${HOST}/disko.nix"
 else
   echo "Assuming /mnt is already mounted. Verifying..."
   if ! mountpoint -q /mnt; then
@@ -35,7 +34,7 @@ mkdir -p -m 700 "${SECRETS_DIR}"
 
 read -rp "Enter username: " TARGET_USER
 
-USER_CONFIG_FILE="${FLAKES_DIR}/${HOST}/users/${TARGET_USER}.nix"
+USER_CONFIG_FILE="${CURRENT_DIR}/${HOST}/users/${TARGET_USER}.nix"
 
 if [[ ! -f "${USER_CONFIG_FILE}" ]]; then
   echo "Error: User configuration '${TARGET_USER}' was not found."
@@ -67,42 +66,14 @@ else
   echo "Created password hash for ${TARGET_USER}."
 fi
 
-mkdir -p -m 700 "${IWD_DIR}"
+mkdir -p "${ETC_NIX_DIR}"
+rm -rf "${ETC_NIX_DIR:?}/*"
+cp -a "${CURRENT_DIR}/." "${ETC_NIX_DIR}"
 
-read -rp "Enter Wi-Fi SSID (Network Name): " WIFI_SSID
-if [[ -z "${WIFI_SSID:-}" ]]; then
-  echo "SSID cannot be empty."
-  exit 1
-fi
-
-WIFI_SECRET_FILE="${IWD_DIR}/${WIFI_SSID}.psk"
-if test -f "${WIFI_SECRET_FILE}"; then
-  echo "Wi-Fi profile for '${WIFI_SSID}' already exists. Skipping ..."
-else
-  read -sp "Enter Wi-Fi Password: " WIFI_PSK
-  echo
-  if [[ -n "${WIFI_PSK:-}" ]]; then
-    cat <<EOF | tee "${WIFI_SECRET_FILE}" > /dev/null
-[Security]
-Passphrase=${WIFI_PSK}
-EOF
-    chown -R root:root "${IWD_DIR}"
-    chmod 700 "${IWD_DIR}"
-    chmod 600 "${WIFI_SECRET_FILE}"
-    unset WIFI_PSK
-    echo "Created Wi-Fi profile for '${WIFI_SSID}'."
-  fi
-fi
-
-
-mkdir -p "${FLAKE_DIR}"
-rm -rf "${FLAKE_DIR:?}/*"
-cp -a "${FLAKES_DIR}/." "${FLAKE_DIR}"
-
-cd "${FLAKE_DIR}"
+cd "${ETC_NIX_DIR}"
 
 nix --extra-experimental-features "nix-command flakes" flake update --commit-lock-file || true
 
-nixos-install --no-root-passwd --root /mnt --flake path:"${FLAKE_DIR}#${HOST}" --option 'extra-substituters' 'https://nyx-cache.chaotic.cx/' --option extra-trusted-public-keys "nyx-cache.chaotic.cx:dJxTrgMC3V3cFfyIiBQDQorG6k1LsqurH/srpMSq7qk="
+nixos-install --no-root-passwd --root /mnt --flake path:"${ETC_NIX_DIR}#${HOST}" --option 'extra-substituters' 'https://nyx-cache.chaotic.cx/' --option extra-trusted-public-keys "nyx-cache.chaotic.cx:dJxTrgMC3V3cFfyIiBQDQorG6k1LsqurH/srpMSq7qk="
 
 echo "Installation complete! You can reboot now."

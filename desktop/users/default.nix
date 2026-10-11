@@ -1,31 +1,28 @@
-{
-  config,
-  load,
-  pkgs,
-  ...
-}:
-let
-  username = "default";
-in
-{
-  users.users.${username} = {
+{ config, pkgs, ... }: {
+  users.users.default = {
     description = "User";
     extraGroups = [
       "gamemode"
+      "networkmanager"
       "wheel"
     ];
-    hashedPasswordFile = "/nix/state/root/etc/secrets/${username}/password.psk";
+    hashedPasswordFile = "/nix/state/root/etc/secrets/default/password.psk";
     isNormalUser = true;
     shell = pkgs.nushell;
   };
 
-  home-manager.users.${username} = {
-    imports = load.children ../home;
+  home-manager.users.default = {
+    imports = [
+      ../home/dconf.nix
+      ../home/gtk.nix
+      ../home/pointer-cursor.nix
+      ../home/programs.nix
+      ../home/services.nix
+      ../home/systemd.nix
+      ../home/xdg.nix
+    ];
     home = {
-      packages = with pkgs; [
-        openmw
-        telegram-desktop
-      ];
+      packages = [ ];
       persistence = {
         "/nix/state/home" = {
           directories = [
@@ -38,22 +35,18 @@ in
               mode = "0700";
             }
             {
+              directory = ".local/share/keyrings";
+              mode = "0700";
+            }
+            {
               directory = ".local/share/Steam";
               mode = "0700";
             }
-            {
-              directory = ".local/share/TelegramDesktop";
-              mode = "0700";
-            }
-            {
-              directory = ".config/zen/default/chrome";
-              mode = "0700";
-            }
-          ];
-          files = [
-            ".config/zen/default/zen-themes.json"
           ];
         };
+      };
+      sessionVariables = {
+        NIXOS_OZONE_WL = "1";
       };
       stateVersion = config.system.stateVersion;
     };
