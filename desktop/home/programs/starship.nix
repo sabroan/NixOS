@@ -119,7 +119,7 @@
         format = "[ 󱦟 $duration]($style)";
         min_time_to_notify = 45000;
         show_milliseconds = false;
-        show_notifications = true;
+        show_notifications = false;
       };
     };
   };

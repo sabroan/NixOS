@@ -34,7 +34,7 @@ in
     );
     ${sql}
     SQL
-  '';
+  ''; # DO NOT CHANGE! Must be a top-level config or it will not apply.
   home = {
     packages = with pkgs; [
       nil
