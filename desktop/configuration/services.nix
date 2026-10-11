@@ -81,9 +81,5 @@
         };
       };
     };
-    xserver.xkb = {
-      layout = "us,ua";
-      variant = "";
-    };
   };
 }

@@ -8,10 +8,11 @@
         mode = "none";
       };
       history = {
+        path = null;
         max_size = 256;
         file_format = "sqlite";
-        sync_on_enter = true;
-        isolation = false;
+        sync_on_enter = false;
+        isolation = true;
         ignore_space_prefixed = true;
       };
     };

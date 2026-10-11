@@ -14,7 +14,6 @@
   home-manager.users.default = {
     imports = [
       ../home/dconf.nix
-      ../home/gtk.nix
       ../home/pointer-cursor.nix
       ../home/programs.nix
       ../home/services.nix

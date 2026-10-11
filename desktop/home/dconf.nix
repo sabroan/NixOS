@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   dconf = {
     enable = true;
     settings = {
@@ -9,11 +9,15 @@
         color-shading-type = "solid";
         primary-color = "#000000";
         secondary-color = "#000000";
-        picture-uri = "";
-        picture-uri-dark = "";
+        picture-uri = "none";
+        picture-uri-dark = "none";
       };
       "org/gnome/desktop/input-sources" = {
         per-window = true;
+        sources = [
+          (lib.hm.gvariant.mkTuple [ "xkb" "us" ])
+          (lib.hm.gvariant.mkTuple [ "xkb" "ua" ])
+        ];
       };
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";

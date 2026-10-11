@@ -38,8 +38,5 @@
         inputs.chaotic.packages.${pkgs.stdenv.hostPlatform.system}.proton-ge-custom
       ];
     };
-    xwayland = {
-      enable = true;
-    };
   };
 }
