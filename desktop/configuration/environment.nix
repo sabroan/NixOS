@@ -38,16 +38,27 @@
         "/etc/machine-id"
       ];
     };
+    sessionVariables = {
+      XDG_DATA_DIRS = [
+        "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+      ];
+    };
     systemPackages = with pkgs; [
+      eyedropper
       fragments
       gnome-autoar
       gnome-bluetooth
       gnome-boxes
       gnome-calendar
       gnome-console
+      gnome-logs
+      gnome-secrets
       gnome-system-monitor
       gnome-text-editor
+      loupe
       nautilus
+      papers
+      showtime
     ];
     variables = {
       HSA_OVERRIDE_GFX_VERSION = "11.0.0";
