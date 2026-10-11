@@ -29,6 +29,8 @@
       };
       "org/gnome/desktop/notifications/application/org-gnome-console" = {
         enable = false;
+        show-banners = false;
+        show-in-lock-screen = false;
       };
       "org/gnome/desktop/privacy" = {
         disable-camera = true;
