@@ -43,10 +43,12 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
           default_area = "menupanel";
+          private_browsing = true;
         };
         "twitch5-fork@traumvogel" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/alternate-player-for-twitch/latest.xpi";
           installation_mode = "force_installed";
+          private_browsing = true;
         };
       };
       FirefoxHome = {
