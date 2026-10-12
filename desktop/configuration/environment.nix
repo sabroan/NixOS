@@ -38,6 +38,9 @@
         "/etc/machine-id"
       ];
     };
+    sessionVariables = {
+      QT_QPA_PLATFORMTHEME = "xdgdesktopportal";
+    };
     systemPackages = with pkgs; [
       eyedropper
       fragments
