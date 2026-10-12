@@ -7,7 +7,13 @@
       AutofillCreditCardEnabled = false;
       BlockAboutAddons = true;
       BlockAboutProfiles = true;
-      ClearOnShutdown = true;
+      ClearOnShutdown = {
+        BrowsingHistoryAndDownloads = true;
+        Cache = true;
+        CookiesAndStorage = false;
+        FormData = true;
+        SiteSettings = true;
+      };
       ContentAnalysisTelemetry = {
         Enabled = false;
         UrlLogging = "none";
