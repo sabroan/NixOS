@@ -4,9 +4,6 @@
     ./services/pipewire.nix
   ];
   services = {
-    dbus = {
-      enable = true;
-    };
     desktopManager = {
       gnome = {
         enable = true;
