@@ -1,40 +1,4 @@
-{ lib, pkgs, ... }:
-let
-  sql =
-    let
-      INSERT = key: value: ''
-        INSERT OR REPLACE INTO ItemTable (key, value)
-        VALUES ('${key}', '${toString value}');
-      '';
-    in
-    lib.concatStringsSep "\n" (
-      lib.mapAttrsToList INSERT {
-        "workbench.activity.showAccounts" = "false";
-        "workbench.explorer.views.state.hidden" = builtins.toJSON [
-          {
-            id = "outline";
-            isHidden = true;
-          }
-          {
-            id = "timeline";
-            isHidden = true;
-          }
-        ];
-      }
-    );
-in
-{
-  home.activation.vscodeState = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    db="$HOME/.config/Code/User/globalStorage/state.vscdb"
-    mkdir -p "$(dirname "$db")"
-    ${lib.getExe pkgs.sqlite} "$db" <<'SQL'
-    CREATE TABLE IF NOT EXISTS ItemTable (
-      key TEXT UNIQUE ON CONFLICT REPLACE,
-      value BLOB
-    );
-    ${sql}
-    SQL
-  ''; # DO NOT CHANGE! Must be a top-level config or it will not apply.
+{ lib, pkgs, ... }: {
   home = {
     packages = with pkgs; [
       nil
@@ -47,6 +11,9 @@ in
             directory = ".config/Code/User/globalStorage/bmewburn.vscode-intelephense-client";
             mode = "0700";
           }
+        ];
+        files = [
+          .config/Code/User/globalStorage/state.vscdb
         ];
       };
     };
