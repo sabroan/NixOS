@@ -5,7 +5,6 @@
       nerd-fonts.jetbrains-mono
       noto-fonts
       noto-fonts-color-emoji
-      redhat-official-fonts
     ];
     fontconfig = {
       enable = true;
@@ -21,10 +20,7 @@
       };
       defaultFonts = {
         emoji = [ "Noto Color Emoji" ];
-        sansSerif = [
-          "Red Hat Text"
-          "Noto Sans"
-        ];
+        sansSerif = [ "Noto Sans" ];
         serif = [ "Noto Serif" ];
         monospace = [ "JetBrainsMono Nerd Font" ];
       };
