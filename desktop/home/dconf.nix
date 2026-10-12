@@ -29,7 +29,7 @@
         ];
       };
       "org/gnome/desktop/interface" = {
-        clock-show-seconds = true;
+        clock-show-seconds = false;
         clock-show-weekday = true;
         color-scheme = "prefer-dark";
         font-antialiasing = "rgba";
