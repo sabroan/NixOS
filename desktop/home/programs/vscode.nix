@@ -13,7 +13,7 @@
           }
         ];
         files = [
-          .config/Code/User/globalStorage/state.vscdb
+          ".config/Code/User/globalStorage/state.vscdb"
         ];
       };
     };
