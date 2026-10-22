@@ -37,7 +37,7 @@
         show_always = false;
         style_user = "bg:none fg:white";
         style_root = "bg:none fg:red";
-        format = "[$user]($style)";
+        format = "[ $user]($style)";
       };
 
       hostname = {
@@ -48,7 +48,7 @@
       directory = {
         disabled = false;
         style = "bold bg:none fg:white";
-        format = "[$path]($style)[$read_only]($read_only_style)";
+        format = "[ $path]($style)[$read_only]($read_only_style)";
         substitutions = {
           Downloads = " ";
         };
@@ -57,41 +57,41 @@
       git_branch = {
         disabled = false;
         style = "fg:blue bg:none";
-        format = "[$symbol$branch(:$remote_branch)]($style)";
+        format = "[ $symbol$branch(:$remote_branch)]($style)";
       };
 
       git_status = {
         disabled = false;
         style = "fg:yellow bg:none";
-        format = "[$all_status$ahead_behind]($style)";
+        format = "[ $all_status$ahead_behind]($style)";
       };
 
       nodejs = {
         disabled = false;
         symbol = "";
         style = "fg:green bg:none";
-        format = "[$symbol($version)]($style)";
+        format = "[ $symbol($version)]($style)";
       };
 
       bun = {
         disabled = false;
         symbol = "";
         style = "fg:white bg:none";
-        format = "[$symbol($version)]($style)";
+        format = "[ $symbol($version)]($style)";
       };
 
       php = {
         disabled = false;
         symbol = "";
         style = "fg:purple bg:none";
-        format = "[$symbol($version)]($style)";
+        format = "[ $symbol($version)]($style)";
       };
 
       docker_context = {
         disabled = false;
         symbol = "";
         style = "fg:blue bg:none";
-        format = "[$symbol($context)]($style)";
+        format = "[ $symbol($context)]($style)";
       };
 
       time = {
