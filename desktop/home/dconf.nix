@@ -5,6 +5,42 @@
       "org/gnome/Console" = {
         transparency = true;
       };
+      "org/gnome/desktop/app-folders" = {
+        folder-children = [
+          "Games"
+          "System"
+          "Utilities"
+        ];
+      };
+      "org/gnome/desktop/app-folders/folders/Games" = {
+        apss = [
+          "steam.desktop"
+          "io.github.Amethyst.ModManager.desktop"
+          "org.openmw.launcher.desktop"
+          "org.openmw.cs.desktop"
+        ];
+      };
+      "org/gnome/desktop/app-folders/folders/System" = {
+        apss = [
+          "org.gnome.Calendar.desktop"
+          "org.gnome.Boxes.desktop"
+          "org.gnome.Extensions.desktop"
+          "org.gnome.Logs.desktop"
+          "org.gnome.World.Secrets.desktop"
+          "org.gnome.Settings.desktop"
+          "org.gnome.SystemMonitor.desktop"
+        ];
+      };
+      "org/gnome/desktop/app-folders/folders/Utilities" = {
+        apps = [
+          "org.gnome.Papers.desktop"
+          "com.github.finefindus.eyedropper.desktop"
+          "de.haeckerfelix.Fragments.desktop"
+          "org.gnome.Loupe.desktop"
+          "org.gnome.TextEditor.desktop"
+          "org.gnome.Showtime.desktop"
+        ];
+      };
       "org/gnome/desktop/background" = {
         color-shading-type = "solid";
         primary-color = "#000000";
@@ -12,7 +48,7 @@
         picture-uri = "none";
         picture-uri-dark = "none";
       };
-      "org.gnome.desktop.datetime" = {
+      "org/gnome/desktop/datetime" = {
         automatic-timezone = true;
       };
       "org/gnome/desktop/input-sources" = {
@@ -83,7 +119,10 @@
           osd-volume-number.extensionUuid
           primary-input-on-lockscreen.extensionUuid
         ];
-        favorite-apps = [ ];
+        favorite-apps = [
+          "org.gnome.Nautilus.desktop"
+          "org.gnome.Console.desktop"
+        ];
       };
     };
   };
