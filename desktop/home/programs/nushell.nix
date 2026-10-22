@@ -26,6 +26,7 @@
 
       nxupdate = "sudo nixos-rebuild switch --flake path:/etc/nixos";
       nxpurge = "sudo nix-collect-garbage -d";
+      nxedit = "code /etc/nixos";
       tosleep = "systemctl suspend";
     };
   };
