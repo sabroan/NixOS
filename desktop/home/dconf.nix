@@ -13,7 +13,8 @@
         ];
       };
       "org/gnome/desktop/app-folders/folders/Games" = {
-        apss = [
+        name = "Games";
+        apps = [
           "steam.desktop"
           "io.github.Amethyst.ModManager.desktop"
           "org.openmw.launcher.desktop"
@@ -21,7 +22,8 @@
         ];
       };
       "org/gnome/desktop/app-folders/folders/System" = {
-        apss = [
+        name = "System";
+        apps = [
           "org.gnome.Calendar.desktop"
           "org.gnome.Boxes.desktop"
           "org.gnome.Extensions.desktop"
@@ -32,6 +34,7 @@
         ];
       };
       "org/gnome/desktop/app-folders/folders/Utilities" = {
+        name = "Utilities";
         apps = [
           "org.gnome.Papers.desktop"
           "com.github.finefindus.eyedropper.desktop"
