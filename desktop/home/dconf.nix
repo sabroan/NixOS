@@ -10,6 +10,7 @@
           "Games"
           "System"
           "Utilities"
+          "Software"
         ];
       };
       "org/gnome/desktop/app-folders/folders/Games" = {
@@ -27,10 +28,11 @@
           "org.gnome.Calendar.desktop"
           "org.gnome.Boxes.desktop"
           "org.gnome.Extensions.desktop"
-          "org.gnome.Logs.desktop"
           "org.gnome.World.Secrets.desktop"
+          "org.gnome.Logs.desktop"
           "org.gnome.Settings.desktop"
           "org.gnome.SystemMonitor.desktop"
+          "io.github.ilya_zlobintsev.LACT.desktop"
         ];
       };
       "org/gnome/desktop/app-folders/folders/Utilities" = {
@@ -42,6 +44,13 @@
           "org.gnome.Loupe.desktop"
           "org.gnome.TextEditor.desktop"
           "org.gnome.Showtime.desktop"
+        ];
+      };
+      "org/gnome/desktop/app-folders/folders/Software" = {
+        name = "Software";
+        apps = [
+          "podman-desktop.desktop"
+          "com.obsproject.Studio.desktop"
         ];
       };
       "org/gnome/desktop/background" = {
