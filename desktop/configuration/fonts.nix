@@ -5,6 +5,7 @@
       nerd-fonts.jetbrains-mono
       noto-fonts
       noto-fonts-color-emoji
+      unifont
     ];
     fontconfig = {
       enable = true;
@@ -20,9 +21,18 @@
       };
       defaultFonts = {
         emoji = [ "Noto Color Emoji" ];
-        sansSerif = [ "Noto Sans" ];
-        serif = [ "Noto Serif" ];
-        monospace = [ "JetBrainsMono Nerd Font" ];
+        sansSerif = [
+          "Noto Sans"
+          "Unifont"
+        ];
+        serif = [
+          "Noto Serif"
+          "Unifont"
+        ];
+        monospace = [
+          "JetBrainsMono Nerd Font"
+          "Unifont"
+        ];
       };
     };
   };
