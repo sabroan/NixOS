@@ -5,9 +5,6 @@
         gdm = {
           enableGnomeKeyring = true;
         };
-        login = {
-          enableGnomeKeyring = true;
-        };
       };
     };
   };
