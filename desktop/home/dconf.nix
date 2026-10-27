@@ -1,4 +1,26 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+let
+  inherit (lib.hm.gvariant) mkDictionaryEntry mkVariant;
+  shell = {
+    app-picker-layout = {
+      setPosition =
+        name: position:
+        mkDictionaryEntry [
+          name
+          (mkVariant [
+            (mkDictionaryEntry [
+              "position"
+              (mkVariant position)
+            ])
+          ])
+        ];
+      to-layout = apps: [
+        (lib.imap0 (index: app: shell.app-picker-layout.setPosition app index) apps)
+      ];
+    };
+  };
+in
+{
   dconf = {
     enable = true;
     settings = {
@@ -7,6 +29,7 @@
       };
       "org/gnome/desktop/app-folders" = {
         folder-children = [
+          "Internet"
           "Games"
           "System"
           "Utilities"
@@ -17,9 +40,13 @@
         name = "Games";
         apps = [
           "steam.desktop"
-          "io.github.Amethyst.ModManager.desktop"
-          "org.openmw.launcher.desktop"
-          "org.openmw.cs.desktop"
+        ];
+      };
+      "org/gnome/desktop/app-folders/folders/Internet" = {
+        name = "Internet";
+        apps = [
+          "firefox.desktop"
+          "org.telegram.desktop.desktop"
         ];
       };
       "org/gnome/desktop/app-folders/folders/System" = {
@@ -44,13 +71,13 @@
           "org.gnome.Loupe.desktop"
           "org.gnome.TextEditor.desktop"
           "org.gnome.Showtime.desktop"
+          "code.desktop"
         ];
       };
       "org/gnome/desktop/app-folders/folders/Software" = {
         name = "Software";
         apps = [
           "podman-desktop.desktop"
-          "com.obsproject.Studio.desktop"
         ];
       };
       "org/gnome/desktop/background" = {
@@ -116,8 +143,11 @@
         edge-tiling = true;
       };
       "org/gnome/TextEditor" = {
+        discover-settings = false;
         highlight-current-line = true;
         indent-style = "space";
+        indent-width = 4;
+        restore-session = false;
         show-line-numbers = true;
         tab-width = 4;
       };
@@ -125,6 +155,13 @@
         donation-reminder-enabled = false;
       };
       "org/gnome/shell" = {
+        app-picker-layout = shell.app-picker-layout.to-layout [
+          "Internet"
+          "Games"
+          "Software"
+          "System"
+          "Utilities"
+        ];
         disable-user-extensions = false;
         enabled-extensions = with pkgs.gnomeExtensions; [
           appindicator.extensionUuid
