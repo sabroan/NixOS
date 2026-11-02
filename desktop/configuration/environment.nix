@@ -3,6 +3,7 @@
     defaultPackages = [ ];
     gnome = {
       excludePackages = with pkgs; [
+        gnome-remote-desktop
         gnome-tour
       ];
     };
