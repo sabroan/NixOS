@@ -26,6 +26,10 @@
         "/nix/state/home" = {
           directories = [
             {
+              directory = ".config/fragments";
+              mode = "0700";
+            }
+            {
               directory = ".ssh";
               mode = "0700";
             }
