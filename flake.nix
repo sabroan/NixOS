@@ -24,10 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/impermanence";
     };
-    amethyst-mod-manager = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:ChrisDKN/Amethyst-Mod-Manager";
-    };
+    # amethyst-mod-manager = {
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   url = "github:ChrisDKN/Amethyst-Mod-Manager";
+    # };
   };
 
   outputs =
@@ -66,7 +66,8 @@
             nixos-hardware.nixosModules.common-gpu-amd
             nixos-hardware.nixosModules.common-pc-ssd
             impermanence.nixosModules.impermanence
-          ] ++ [
+          ]
+          ++ [
             ./desktop/configuration.nix
             ./desktop/disko.nix
           ];
