@@ -15,10 +15,6 @@
         "xfs"
         "vfat"
       ];
-      systemd = {
-        enable = true;
-      };
-      verbose = false;
     };
     kernel = {
       sysctl = {
