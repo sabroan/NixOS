@@ -1,6 +1,7 @@
 { ... }: {
   programs.nushell = {
     enable = true;
+    loadSessionVariables = true;
     settings = {
       error_style = "short";
       show_banner = false;
