@@ -165,6 +165,7 @@ in
         disable-user-extensions = false;
         enabled-extensions = with pkgs.gnomeExtensions; [
           appindicator.extensionUuid
+          hide-minimized.extensionUuid
           osd-volume-number.extensionUuid
           primary-input-on-lockscreen.extensionUuid
         ];
@@ -178,6 +179,7 @@ in
 
   home.packages = with pkgs.gnomeExtensions; [
     appindicator
+    hide-minimized
     osd-volume-number
     primary-input-on-lockscreen
   ];
