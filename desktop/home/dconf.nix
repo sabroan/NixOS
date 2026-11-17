@@ -166,6 +166,7 @@ in
         enabled-extensions = with pkgs.gnomeExtensions; [
           appindicator.extensionUuid
           hide-minimized.extensionUuid
+          in-picture.extensionUuid
           osd-volume-number.extensionUuid
           primary-input-on-lockscreen.extensionUuid
         ];
@@ -180,7 +181,16 @@ in
   home.packages = with pkgs.gnomeExtensions; [
     appindicator
     hide-minimized
+    in-picture
     osd-volume-number
+    # (osd-volume-number.overrideAttrs (old: {
+    #   version = "14"; # gnome 50 version
+    #   src = pkgs.fetchzip {
+    #     url = "https://github.com/Deminder/osd-volume-number/releases/download/v14/osd-volume-number@deminder.shell-extension.zip";
+    #     hash = "sha256-Advww1EWSNi+2Mw12F7ltU/0Jeg8BKlUJ3YBOpjvUv8=";
+    #     stripRoot = false;
+    #   };
+    # }))
     primary-input-on-lockscreen
   ];
 }
