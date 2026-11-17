@@ -27,6 +27,9 @@
       gnome-keyring = {
         enable = true;
       };
+      gnome-online-accounts = {
+        enable = false;
+      };
     };
     gvfs = {
       enable = true;
@@ -55,10 +58,6 @@
     };
     resolved = {
       enable = true;
-    };
-    scx = {
-      enable = true;
-      scheduler = "scx_lavd";
     };
     speechd = {
       enable = false;
